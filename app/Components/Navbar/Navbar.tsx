@@ -38,7 +38,7 @@ const navLinks: NavLink[] = [
     href: "#testimonial",
   },
   {
-    label: "Pricing Plan",
+    label: "Pricing",
     href: "#pricing",
   },
   {
@@ -197,6 +197,42 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
+        {/* Login/register modal */}
+        {showModal && (
+          <div className='fixed inset-0 z-50 h-screen flex items-center justify-center bg-black/80 backdrop-blur-sm'>
+            <div className='relative bg-purple-100 border border-white/10 rounded-xl p-10 w-[450px] md:w-[500px] shadow-2xl animate-fadeIn'>
+              {/* close */}
+              <button
+                className='absolute top-5 right-5 text-4xl cursor-pointer text-black hover:text-prim transition-all duration-300'
+                onClick={() => setShowModal(false)}
+              >
+                <i className='bi bi-x'></i>
+              </button>
+
+              {/* title */}
+              <h2 className='clash-font text-3xl font-semibold mb-8 text-black'>
+                {isLogin ? "Login to Your Account" : "Register Your Account"}
+              </h2>
+
+              {/* Form */}
+              <div className='flex flex-col gap-4'>
+                {!isLogin && (
+                  <input
+                    type="text"
+                    placeholder='Full Name'
+                    className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:boder-prim transition-all'
+                  />
+                )}
+                <input
+                  type="email"
+                  placeholder='Email Address'
+                  className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:boder-prim transition-all'
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
