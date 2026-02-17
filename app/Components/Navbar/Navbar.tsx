@@ -174,6 +174,28 @@ const Navbar = () => {
               <span className={`block w-6 h-[3px] bg-black transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}></span>
             </button>
           </div>
+
+          {/* Mobile menu */}
+          <div className={`
+               lg:hidden fixed top-[60px] bg-white left-0 w-full z-50 transition-all duration-300
+               ${open ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-6"}
+            `}
+          >
+            <div className='mx-[5%] rounded-2xl shadow-2xl border border-white/10'>
+              <nav className='flex flex-col px-6 py-6 gap-5'>
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className='flex items-center justify-between text-black border-b border-black/10 text-lg tracking-wide hover:text-prim transition-all Cirvuler-font'
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </div>
         </div>
       </div>
     </>
