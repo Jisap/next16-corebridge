@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Kanit, Merriweather, Syne } from "next/font/google";
 import "./globals.css";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
 
 const kanit = Kanit({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -52,7 +54,9 @@ export default function RootLayout({
           antialiased
         `}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

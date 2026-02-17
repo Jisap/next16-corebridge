@@ -2,3 +2,68 @@
 
 @import "bootstrap-icons/font/bootstrap-icons.css";
 @import "remixicon/fonts/remixicon.css";
+
+@theme {
+  --color-prim: #ad46ff;
+  --color-prim-light: #ca8dfc;
+  --color-second: #7A6EFF;
+  --color-dark: #1c1d20;
+  --color-text: #222E48;
+  --color-gray: #3B3B3C;
+  --color-gray-light: #262629;
+  --color-white: #fff;
+  --color-black: #000;
+
+  --font-kanit: "Kanit", sans-serif;
+  --font-merriweather: "Merriweather", serif;
+  --font-syne: "Syne", sans-serif;
+
+  --transition-regular: 0.3s;
+  --transition-slow: 0.6s;
+}
+
+:root {
+  --prim: #ad46ff;
+  --prim-light: #ca8dfc;
+  --second: #7A6EFF;
+  --dark-color: #1c1d20;
+  --text: #222E48;
+  /* --body: #171718; */
+  --gray-color: #3B3B3C;
+  --gray-light: #262629;
+  --white: #fff;
+  --black: #000;
+
+  --font-kanit: "Kanit", sans-serif;
+  --font-merriweather: "Merriweather", serif;
+  --font-syne: "Syne", sans-serif;
+
+  --transition-regular: 0.3s;
+  --transition-slow: 0.6s;
+}
+
+.Kanit {
+  font-family: var(--font-kanit);
+}
+
+.Merriweather {
+  font-family: var(--font-merriweather);
+}
+
+.Syne {
+  font-family: var(--font-syne);
+}
+
+
+body {
+  overflow-x: hidden !important;
+  font-family: var(--font-kanit);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  z-index: 9999;
+}
