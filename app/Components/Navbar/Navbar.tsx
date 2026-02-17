@@ -200,8 +200,8 @@ const Navbar = () => {
 
         {/* Login/register modal */}
         {showModal && (
-          <div className='fixed inset-0 z-50 h-screen flex items-center justify-center bg-black/80 backdrop-blur-sm'>
-            <div className='relative bg-purple-100 border border-white/10 rounded-xl p-10 w-[450px] md:w-[500px] shadow-2xl animate-fadeIn'>
+          <div className='fixed inset-0 z-50 h-screen flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fadeIn'>
+            <div className='relative bg-purple-100 border border-white/10 rounded-xl p-10 w-[450px] md:w-[500px] shadow-2xl animate-scaleUp'>
               {/* close */}
               <button
                 className='absolute top-5 right-5 text-4xl cursor-pointer text-black hover:text-prim transition-all duration-300'
