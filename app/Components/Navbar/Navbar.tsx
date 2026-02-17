@@ -2,7 +2,7 @@
 
 
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type NavLink = {
   label: string;
@@ -216,20 +216,71 @@ const Navbar = () => {
               </h2>
 
               {/* Form */}
-              <div className='flex flex-col gap-4'>
+              <form className='flex flex-col gap-4'>
                 {!isLogin && (
                   <input
                     type="text"
                     placeholder='Full Name'
-                    className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:boder-prim transition-all'
+                    className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:border-prim transition-all'
                   />
                 )}
                 <input
                   type="email"
                   placeholder='Email Address'
-                  className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:boder-prim transition-all'
+                  className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:border-prim transition-all'
                 />
-              </div>
+                <input
+                  type="password"
+                  placeholder='Password'
+                  className='w-full bg-gray-200 border border-black/20 text-black px-4 py-3 rounded-xl focus:outline-none focus:border-prim transition-all'
+                />
+
+                <button
+                  type="button"
+                  className='w-full mt-3 bg-prim text-white text-xl py-3 rounded-xl font-semibold hover:bg-purple-600 transition-all cursor-pointer'
+                >
+                  {isLogin ? "Login Now" : "Register Now"}
+                </button>
+              </form>
+
+              {/* Auth */}
+              <p className='text-center text-sm mt-4 text-black font-semibold'>
+                {isLogin ? (
+                  <>
+                    Don't have an account?{" "}
+                    <button
+                      type='button'
+                      onClick={() => setIsLogin(false)}
+                      className='text-prim hover:underline cursor-pointer transition-all'
+                    >
+                      Register Here
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    Already have an account?{" "}
+                    <button
+                      type='button'
+                      onClick={() => setIsLogin(true)}
+                      className='text-prim hover:underline cursor-pointer transition-all'
+                    >
+                      Login Here
+                    </button>
+                  </>
+                )}
+              </p>
+
+              {/* footer */}
+              <p className='text-center text-sm mt-4 pt-4 border-t border-white/10'>
+                By signing in or signing up to <strong>Corebridge</strong>, you agree to <br />
+                <Link href="/terms" className='text-prim hover:underline cursor-pointer transition-all'>
+                  Terms of Service
+                </Link>
+                {" "} and {" "}
+                <Link href="/privacy" className='text-prim hover:underline cursor-pointer transition-all'>
+                  Privacy Policy
+                </Link>
+              </p>
             </div>
           </div>
         )}

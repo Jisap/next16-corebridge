@@ -1,8 +1,13 @@
-import React from 'react'
+import Image from "next/image"
+import Hero from "../Hero/page"
+
+
 
 const Index = () => {
   return (
-    <div>Index</div>
+    <>
+      <Hero />
+    </>
   )
 }
 
