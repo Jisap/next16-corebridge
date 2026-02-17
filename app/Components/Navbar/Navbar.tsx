@@ -73,14 +73,16 @@ const Navbar = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [activeId, setActiveId] = useState<string>("");
 
+  // Detecta qué sección de la página está visible actualmente
+  // en la pantalla para actualizar el estado activeId
   useEffect(() => {
-    const sectiona = document.querySelectorAll("section[id]");
+    const section = document.querySelectorAll("section[id]"); // Obtiene todas las secciones con un id
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries) => {                                           // Recorre todas las secciones 
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(`#${entry.target.id}`);
+          if (entry.isIntersecting) {                          // Si el elemento está visible
+            setActiveId(`#${entry.target.id}`);                // Actualiza el estado activeId
           }
         })
       },
@@ -89,11 +91,23 @@ const Navbar = () => {
       }
     )
 
-    sectiona.forEach((section) => {
+    section.forEach((section) => {
       observer.observe(section)
     })
 
     return () => observer.disconnect()
+  }, []);
+
+  // Permite que el enlace de inicio se active cuando el usuario está en la parte superior de la página
+  useEffect(() => {
+    const handleTop = () => {
+      if (window.scrollY < 80) {
+        setActiveId("/")
+      }
+    }
+
+    window.addEventListener("scroll", handleTop)
+    return () => window.removeEventListener("scroll", handleTop)
   }, [])
 
   return (
@@ -119,8 +133,19 @@ const Navbar = () => {
           <div className='hidden lg:flex items-center gap-3'>
             <nav className='hidden lg:flex space-x-6 menu-link relative z-40'>
               {navLinks.map((link) => (
-                <Link href={link.href} key={link.label}>
-                  <span className='text-gray-700 hover:text-purple-700 transition-colors duration-300'>
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setActiveId(link.href)}
+                  className={`
+                    flex gap-2 text-lg transition-all 
+                    ${activeId === link.href
+                      ? "font-semibold text-prim border-b-2"
+                      : "text-black"
+                    }`
+                  }
+                >
+                  <span className='text-gray-700 hover:text-prim transition-colors duration-300'>
                     {link.label}
                   </span>
                 </Link>
@@ -130,8 +155,23 @@ const Navbar = () => {
 
           {/* Right section */}
           <div className='flex items-center gap-4 nav-right'>
-            <button>
+            <button
+              onClick={() => {
+                setIsLogin(true)
+                setShowModal(true)
+              }}
+            >
               <i className='bi bi-person w-10 h-10 flex justify-center items-center border birder-gray-500 rounded-full hover:bg-white hover:border-white hover:shadow-lg transition-all duration-200 cursor-pointer'></i>
+            </button>
+
+            {/* Mobile Hamburger */}
+            <button
+              className='lg:hidden flex flex-col gap-[5px]'
+              onClick={() => setOpen(!open)}
+            >
+              <span className={`block w-6 h-[3px] bg-black transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`}></span>
+              <span className={`block w-6 h-[3px] bg-black transition-all duration-300 ${open ? "opacity-0" : ""}`}></span>
+              <span className={`block w-6 h-[3px] bg-black transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`}></span>
             </button>
           </div>
         </div>
