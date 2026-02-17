@@ -11,27 +11,27 @@ import CountUp from "react-countup"
 const Hero = () => {
   return (
     <>
-      <div className="hero-header flex items-center relative">
-        <div className="ps-[8%] lg:ps-[16%] pe-[8%] md:pe-0 py-10">
-          <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-3">
+      <div className="hero-header relative">
+        <div className="container mx-auto px-6 lg:px-[5%] py-10 lg:py-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-32 items-center min-h-[calc(100vh-80px)] lg:min-h-screen">
             {/* izquierda */}
-            <div className="w-full lg:w-1/2">
+            <div className="hero-content-wrapper z-10 lg:pr-10">
               <div className="hero-content w-full">
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold">
+                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2">
                   AGENCY
                 </h1>
 
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold">
+                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2">
                   <span>
                     OFFERING
                   </span>
                 </h1>
 
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold">
+                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2">
                   LEAD CAPTURE
                 </h1>
 
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold flex items-center gap-2">
+                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold flex items-center justify-center lg:justify-start gap-2 mb-6">
                   SOFTWARE
 
                   <Image
@@ -39,29 +39,30 @@ const Hero = () => {
                     alt="text-arrow"
                     width={40}
                     height={40}
+                    className="w-5 md:w-8"
                   />
                 </h1>
 
-                <p className="mt-5 text-xl">
+                <p className="mt-5 text-lg md:text-xl text-gray-700 max-w-lg mx-auto lg:mx-0">
                   Success in marketing comes from well-synchronised and steady tactics
                 </p>
 
-                <div className="mt-10">
-                  <div className="flex justify-between items-center px-4 py-3 bg-white rounded-lg shadow-lg shadow-gray-200">
+                <div className="mt-10 max-w-xl mx-auto lg:mx-0">
+                  <div className="flex items-center p-1.5 sm:p-2 bg-white rounded-xl shadow-2xl shadow-gray-400/50 gap-2">
                     <input
                       type="text"
                       placeholder="Enter your E-mail"
-                      className="w-[60%] lg:w-[70%] outline-none"
+                      className="flex-1 outline-none px-4 py-2 text-base bg-transparent min-w-0"
                     />
 
                     <button
-                      className="bg-black px-4 py-3 text-white rounded-lg flex gap-2 border border-black hover:bg-transparent hover:text-black transition-all duration-300 cursor-pointer group"
+                      className="bg-black px-4 sm:px-6 py-3 text-white rounded-lg flex justify-center items-center gap-2 border border-black hover:bg-transparent hover:text-black transition-all duration-300 cursor-pointer group whitespace-nowrap text-sm md:text-base font-semibold shrink-0"
                     >
-                      Start for free <i className="bi bi-arrow-up-right group-hover:rotate-45 transition-all duration-300 cursor-pointer"></i>
+                      Start for free <i className="bi bi-arrow-up-right group-hover:rotate-45 transition-all duration-300"></i>
                     </button>
                   </div>
 
-                  <p className="tracking-wider text-gray-700 mt-5">
+                  <p className="tracking-wider text-gray-500 mt-5 text-sm md:text-base">
                     30 Day Free Trial No Credit Card Required
                   </p>
                 </div>
@@ -69,16 +70,13 @@ const Hero = () => {
             </div>
 
             {/* derecha */}
-            <div className="w-full lg:w-1/2">
-              <p className="opacity-0">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto, sequi.
-              </p>
-
-              <div className="hero-img relative lg:absolute bottom-0 right-0">
+            <div className="relative h-full flex items-end justify-center lg:justify-end lg:static">
+              <div className="hero-img relative lg:absolute lg:bottom-0 lg:right-0 max-w-[90%] lg:max-w-[50%] xl:max-w-[48%] flex items-end">
                 <Image
                   src={HeroImg}
                   alt="hero"
-                  className="w-full h-full"
+                  className="w-full h-auto object-contain"
+                  priority
                 />
 
                 <div className="hero-image-wrapper">
@@ -86,6 +84,8 @@ const Hero = () => {
                     <Image
                       src={clutchImg}
                       alt="clutch"
+                      width={60}
+                      height={60}
                     />
                   </div>
 
@@ -97,30 +97,39 @@ const Hero = () => {
                   </div>
 
                   <div className="hero-info-wrap hidden md:block">
-                    <div className="hero-info shadow-lg shadow-gray-300 bg-white p-6 rounded-lg">
-                      <div className="stars flex gap-1">
-                        <i className="bi bi-star-fill text-yellow-400"></i>
-                        <i className="bi bi-star-fill text-yellow-400"></i>
-                        <i className="bi bi-star-fill text-yellow-400"></i>
-                        <i className="bi bi-star-fill text-yellow-400"></i>
-                        <i className="bi bi-star-fill text-yellow-400"></i>
+                    <div className="hero-info shadow-lg shadow-gray-300 bg-white p-4 md:p-6 rounded-lg">
+                      <div className="stars flex gap-1 mb-2">
+                        <i className="bi bi-star-fill text-yellow-500"></i>
+                        <i className="bi bi-star-fill text-yellow-500"></i>
+                        <i className="bi bi-star-fill text-yellow-500"></i>
+                        <i className="bi bi-star-fill text-yellow-500"></i>
+                        <i className="bi bi-star-fill text-yellow-500"></i>
                       </div>
 
-                      <p className="tracking-wider text-gray-300 font-semibold Syne">
+                      <p className="tracking-wider text-gray-400 font-semibold Syne text-sm">
                         Trusted by 1 Million users
                       </p>
                     </div>
 
-                    <div className="hero-info shadow-lg shadow-gray-300 bg-white p-6 rounded-lg mt-3">
-                      <div className="flex items-center gap-2">
-                        <div className="flex items-center justify-center rounded-xl text-3xl font-semibold border border-gray-300 px-4 py-2">
+                    <div className="hero-info shadow-lg shadow-gray-300 bg-white p-4 md:p-6 rounded-lg mt-3">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center rounded-xl text-2xl md:text-3xl font-bold border border-gray-100 bg-gray-50 px-3 py-1 md:px-4 md:py-2">
                           <CountUp
                             start={0}
                             end={5}
-                            duration={5}
+                            duration={3}
                             enableScrollSpy
                             scrollSpyOnce
-                          />K
+                          >
+                            {({ countUpRef }) => (
+                              <span ref={countUpRef} />
+                            )}
+                          </CountUp>K
+                        </div>
+
+                        <div className="flex flex-col text-gray-600 font-bold Syne leading-tight text-sm md:text-base">
+                          <p>Happy</p>
+                          <p>Customers</p>
                         </div>
                       </div>
                     </div>
