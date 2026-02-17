@@ -95,6 +95,36 @@ const Hero = () => {
                       alt="arrow"
                     />
                   </div>
+
+                  <div className="hero-info-wrap hidden md:block">
+                    <div className="hero-info shadow-lg shadow-gray-300 bg-white p-6 rounded-lg">
+                      <div className="stars flex gap-1">
+                        <i className="bi bi-star-fill text-yellow-400"></i>
+                        <i className="bi bi-star-fill text-yellow-400"></i>
+                        <i className="bi bi-star-fill text-yellow-400"></i>
+                        <i className="bi bi-star-fill text-yellow-400"></i>
+                        <i className="bi bi-star-fill text-yellow-400"></i>
+                      </div>
+
+                      <p className="tracking-wider text-gray-300 font-semibold Syne">
+                        Trusted by 1 Million users
+                      </p>
+                    </div>
+
+                    <div className="hero-info shadow-lg shadow-gray-300 bg-white p-6 rounded-lg mt-3">
+                      <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-center rounded-xl text-3xl font-semibold border border-gray-300 px-4 py-2">
+                          <CountUp
+                            start={0}
+                            end={5}
+                            duration={5}
+                            enableScrollSpy
+                            scrollSpyOnce
+                          />K
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
