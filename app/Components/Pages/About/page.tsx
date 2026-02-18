@@ -12,7 +12,7 @@ import aboutTeam from "@/public/Images/about-team-image.png"
 const About = () => {
   return (
     <>
-      <div className="px-[8%] lg:px-[16%] py-20" id="about">
+      <section className="px-[8%] lg:px-[16%] py-20" id="about">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-5">
           {/* Izquierda */}
           <div className="w-full lg:w-1/2">
@@ -124,7 +124,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   )
 }
