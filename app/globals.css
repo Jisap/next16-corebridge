@@ -388,6 +388,7 @@ body {
   position: relative !important;
 }
 
+/* Elipse de fondo que da brillo de color al fondo*/
 .services-wrap::after {
   content: "";
   position: absolute;
