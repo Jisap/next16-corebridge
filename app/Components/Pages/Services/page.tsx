@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import ServiceIcon1 from "@/public/Images/service-icon2.svg"
+import ServiceIcon1 from "@/public/Images/service-icon1.svg"
 import ServiceIcon2 from "@/public/Images/service-icon2.svg"
 import ServiceIcon3 from "@/public/Images/service-icon3.svg"
 import ServiceIcon4 from "@/public/Images/service-icon4.svg"
