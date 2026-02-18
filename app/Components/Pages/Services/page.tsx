@@ -13,7 +13,7 @@ const ServiceData = [
     id: 1,
     img: ServiceIcon1,
     title: "Social Influence Tactics",
-    desc: "We identify influential voices the content.",
+    desc: "We identify influential voices the content creators and build authentic partnerships.",
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ const Services = () => {
         </div>
 
         <div className="mt-20 services-wrap">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
             {ServiceData.map((service, index) => (
               <div
                 key={index}
@@ -81,8 +81,8 @@ const Services = () => {
                     {service.desc}
                   </p>
 
-                  <button className="servive-btn bg-black text-white px-5 py-2 rounded-lg mt-5 border border-black transition-all duration-300 cursor-pointer">
-                    <div className="servicec-btn-text">
+                  <button className="service-btn bg-black text-white px-5 py-2 rounded-lg mt-5 border border-black transition-all duration-300 cursor-pointer">
+                    <div className="service-btn-text">
                       Read More <i className="bi bi-arrow-right ps-2"></i>
                     </div>
                   </button>
