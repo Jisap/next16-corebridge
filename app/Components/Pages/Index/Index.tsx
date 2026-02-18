@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Hero from "../Hero/page"
 import Brands from "../Brands/page"
+import About from "../About/page"
 
 
 
@@ -9,6 +10,7 @@ const Index = () => {
     <>
       <Hero />
       <Brands />
+      <About />
     </>
   )
 }
