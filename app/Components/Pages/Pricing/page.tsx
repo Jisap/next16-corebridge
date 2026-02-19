@@ -66,7 +66,7 @@ const PricingData = [
 const Pricing = () => {
   return (
     <>
-      <section id="pricing" className="px-[8%] lg-[px-[16%] py-10 lg:py-30">
+      <section id="pricing" className="px-[8%] lg:[px-[16%] py-10 lg:py-30">
         <div className="flex flex-col items-center">
           <div className='title text-center w-full lg:w-[50%]'>
             <h5 className='Syne text-2xl'>
