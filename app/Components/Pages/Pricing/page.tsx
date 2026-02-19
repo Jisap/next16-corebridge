@@ -1,50 +1,65 @@
 "use client"
 
 
+const allFeatures = [
+  { key: "members", label: "Team Members" },
+  { key: "usage", label: "Unlimited usage" },
+  { key: "storage", label: "Unlimited Drive storage" },
+  { key: "helpCenter", label: "Concierge Help center" },
+  { key: "emailSupport", label: "Priority Email Support" },
+  { key: "support247", label: "24/7 Support" },
+  { key: "strategyCalls", label: "Monthly Strategy Calls" },
+  { key: "dedicatedManager", label: "Supervision of a dedicated manager" }
+]
+
 const PricingData = [
   {
     id: 1,
     plan: "Basic Plan",
     price: "$39",
     desc: "Perfect for freelancer and small bussiness owners",
-    includes: [
-      "Up to 3 Members",
-      "Unlimited usage",
-      "Unlimited Drive storage",
-      "Concierge Help center",
-      "Priority Email Support"
-    ]
+    features: {
+      members: { included: true, value: "Up to 3 Members" },
+      usage: { included: true },
+      storage: { included: true },
+      helpCenter: { included: true },
+      emailSupport: { included: true },
+      support247: { included: false },
+      strategyCalls: { included: false },
+      dedicatedManager: { included: false }
+    }
   },
   {
     id: 2,
     plan: "Standard Plan",
     price: "$49",
     desc: "Ideal for growing businesses that need hands-on support",
-    includes: [
-      "Up to 10 Members",
-      "Unlimited usage",
-      "Unlimited Drive storage",
-      "Concierge Help center",
-      "Priority Email Support",
-      "24/7 Support",
-      "Monthly Strategy Calls"
-    ]
+    features: {
+      members: { included: true, value: "Up to 10 Members" },
+      usage: { included: true },
+      storage: { included: true },
+      helpCenter: { included: true },
+      emailSupport: { included: true },
+      support247: { included: true },
+      strategyCalls: { included: true },
+      dedicatedManager: { included: false }
+    }
   },
   {
     id: 3,
     plan: "Premium Plan",
     price: "$59",
     desc: "Perfect for established businesses needing comprehensive financial guidance",
-    includes: [
-      "Up to 20 Members",
-      "Unlimited usage",
-      "Unlimited Drive storage",
-      "Concierge Help center",
-      "Priority Email Support",
-      "24/7 Support",
-      "Monthly Strategy Calls",
-      "Supervision of a dedicated manager"
-    ]
+    features: {
+      members: { included: true, value: "Up to 20 Members" },
+      usage: { included: true },
+      storage: { included: true },
+      helpCenter: { included: true },
+      emailSupport: { included: true },
+      support247: { included: true },
+      strategyCalls: { included: true },
+      dedicatedManager: { included: true }
+    }
   }
 ]
 
@@ -92,12 +107,23 @@ const Pricing = () => {
                   </div>
 
                   <ul className="w-full space-y-2 p-6 bg-white">
-                    {plan.includes.map((item, index) => (
-                      <li key={index} className="flex items-center gap-2 text-lg text-gray-800">
-                        <i className="bi bi-check2 text-xl text-black"></i>
-                        {item}
-                      </li>
-                    ))}
+                    {allFeatures.map((feature) => {
+                      const featureData = plan.features[feature.key as keyof typeof plan.features]                    // value del feature iterado: para members sería "{ included: true, value: "Up to 3 Members" }."
+                      const isIncluded = featureData.included                                                         // Accede a la prop "included". 
+                      const displayText = feature.key === "members" && featureData.included && "value" in featureData // Si se cumplen las 3 propiedades, se muestra su valor sino solo el label de allFeatures
+                        ? featureData.value
+                        : feature.label
+
+                      return (
+                        <li
+                          key={feature.key}
+                          className={`flex items-center gap-2 text-lg ${isIncluded ? "text-gray-800" : "text-gray-400 line-through"}`}
+                        >
+                          <i className={`bi ${isIncluded ? "bi-check2 text-black" : "bi-x text-gray-400"} text-xl`}></i>
+                          {displayText}
+                        </li>
+                      )
+                    })}
                   </ul>
                 </div>
               </div>
