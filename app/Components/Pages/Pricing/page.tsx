@@ -82,8 +82,14 @@ const Pricing = () => {
         {/* Pricing Card */}
         <div className="mt-20 md:mt-30 Pricing-wrap">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PricingData.map((plan) => (
-              <div key={plan.id} className="flex flex-col bg-white/50 border border-white p-4 shadow-lg rounded-lg">
+            {PricingData.map((plan, index) => (
+              <div
+                key={plan.id}
+                className={`
+                  flex flex-col bg-white/50 border border-white p-4 shadow-lg rounded-lg 
+                  ${index === 2 ? 'md:col-span-2 lg:col-span-1' : ''}
+                  `
+                }>
                 <div className="flex flex-col shadow-lg shadow-gray-300 rounded-2xl overflow-hidden w-full">
                   <div className="p-6 pb-2 bg-white/70 Pricing-box">
                     <h1 className="Syne text-2xl font-semibold mb-2">
