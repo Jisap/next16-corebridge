@@ -34,8 +34,8 @@ const navLinks: NavLink[] = [
     ],
   },
   {
-    label: "Testimonial",
-    href: "#testimonial",
+    label: "Testimonials",
+    href: "#testimonials",
   },
   {
     label: "Pricing",
