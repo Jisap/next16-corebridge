@@ -6,6 +6,7 @@ import Services from "../Services/page"
 import History from "../History/page"
 import Testimonials from "../Testimonials/page"
 import VideoBanner from "../VideoBanner/page"
+import Pricing from "../Pricing/page"
 
 
 
@@ -19,6 +20,7 @@ const Index = () => {
       <History />
       <Testimonials />
       <VideoBanner />
+      <Pricing />
     </>
   )
 }
