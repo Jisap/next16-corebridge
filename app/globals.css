@@ -689,3 +689,32 @@ body {
     height: 100%;
   }
 }
+
+.faq-btn {
+  background: linear-gradient(90deg, #a371f6 0%, #ffa6c4 100%);
+}
+
+.faq-question {
+  box-shadow: 0 0 15px rgba(131, 131, 131, 0.4);
+  border-radius: 20px;
+  background-color: var(--white);
+}
+
+.faq-form-wrap {
+  position: relative;
+  z-index: 5;
+}
+
+.faq-form-wrap::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 600px;
+  border-radius: 100%;
+  background-color: var(--prim);
+  filter: blur(100px);
+  z-index: -1;
+}

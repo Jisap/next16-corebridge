@@ -9,6 +9,7 @@ import VideoBanner from "../VideoBanner/page"
 import Pricing from "../Pricing/page"
 import MarqueeText from "../MarqueeText/page"
 import Blog from "../Blogs/page"
+import Faqs from "../Faqs/page"
 
 
 
@@ -26,6 +27,7 @@ const Index = () => {
       <Pricing />
       <MarqueeText />
       <Blog />
+      <Faqs />
     </>
   )
 }
