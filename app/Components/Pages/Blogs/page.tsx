@@ -146,6 +146,15 @@ const Blog = () => {
               </div>
             ))}
           </div>
+
+          <div className="w-full flex justify-center items-center mt-12">
+            <button onClick={() => setShowAll(!showAll)}>
+              <div
+                className="btn bg-white/20 backdrop-blur-xl text-xl mt-5 w-full hover:bg-black hover:text-white px-6 py-3 rounded-xl mb-5 border border-black/30 transition-all duration-300 cursor-pointer">
+                {showAll ? "Show Less" : "Show More"} <i className="bi bi-arrow-right ps-2"></i>
+              </div>
+            </button>
+          </div>
         </div>
       </section>
     </>
