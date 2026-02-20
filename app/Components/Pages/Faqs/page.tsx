@@ -114,6 +114,7 @@ const Faqs = () => {
               </p>
             </div>
 
+            {/* Gestión de tabs */}
             <div className="mt-8">
               <div className="flex space-x-4 border-b border-gray-300">
                 {tabs.map((tab) => (

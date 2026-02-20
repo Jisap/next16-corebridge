@@ -718,3 +718,13 @@ body {
   filter: blur(100px);
   z-index: -1;
 }
+
+.GetInTouch {
+  width: 100%;
+  height: 50vh;
+  border-radius: 20px;
+  background-image: url("/Images/GetInTouch.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
