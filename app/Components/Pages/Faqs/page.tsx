@@ -92,10 +92,10 @@ const Faqs = () => {
   const [activeTab, setActiveTab] = useState(tabs[0].id);
 
   const toggleFaq = (id: number) => {
-    setActiveId(activeId === id ? null : id);
+    setActiveId(activeId === id ? null : id);                               // Si el id es igual al id activo, se cierra, si no, se abre
   };
 
-  const filteredFaqs = faqData.filter((faq) => faq.category === activeTab);
+  const filteredFaqs = faqData.filter((faq) => faq.category === activeTab); // Filtra los FAQs por categoria
 
   return (
     <>
@@ -129,7 +129,7 @@ const Faqs = () => {
                     {activeTab === tab.id && (
                       <motion.div
                         className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-blue-500"
-                        layoutId="underline"
+                        layoutId="underline" // Permite que que Framer Motion gestione el "layout" de un elemento compartido que salta de un padre a otro.
                       />
                     )}
                   </button>
@@ -156,7 +156,11 @@ const Faqs = () => {
                         </h3>
                         <i className={`bi text-2xl ${activeId === faq.id ? "bi-dash" : "bi-plus"}`}></i>
                       </div>
-                      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${activeId === faq.id ? "max-h-screen mt-3" : "max-h-0"}`}>
+                      <div className={`
+                          overflow-hidden transition-all duration-500 ease-in-out 
+                          ${activeId === faq.id ? "max-h-screen mt-3" : "max-h-0"}`
+                      }
+                      >
                         <p className="px-1 text-gray-600 tracking-wide">
                           {faq.answer}
                         </p>
