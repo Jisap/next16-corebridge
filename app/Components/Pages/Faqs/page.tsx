@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { staggerContainer, fadeInLeft, fadeInRight } from "@/app/Components/Animations/variants";
 
 const faqData = [
   // General Questions
@@ -100,8 +101,14 @@ const Faqs = () => {
   return (
     <>
       <section id="faqs" className="px-[8%] lg:px-[16%] py-10 lg:py-20">
-        <div className="flex flex-col lg:flex-row justify-between gap-10">
-          <div className="w-full lg:w-1/2">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col lg:flex-row justify-between gap-10"
+        >
+          <motion.div variants={fadeInLeft} className="w-full lg:w-1/2">
             <div className='title'>
               <h5 className='Syne text-2xl text-gray-500'>
                 ( ASK ANY QUESTIONS )
@@ -171,9 +178,9 @@ const Faqs = () => {
                 </AnimatePresence>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="w-full lg:w-1/2 sticky top-20 left-0 h-full">
+          <motion.div variants={fadeInRight} className="w-full lg:w-1/2 sticky top-20 left-0 h-full">
             <div className="faq-form-wrap">
               <div className="bg-white/40 backdrop-blur-2xl border border-white p-5 rounded-xl">
                 <div className="bg-white rounded-xl p-6">
@@ -208,8 +215,8 @@ const Faqs = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
     </>
   );
