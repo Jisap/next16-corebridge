@@ -11,6 +11,8 @@ import Blog7 from "@/public/Images/blog-7.jpg";
 import Blog8 from "@/public/Images/blog-8.jpg";
 import Blog9 from "@/public/Images/blog-9.jpg";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"
+import { fadeInUp, staggerContainer } from "@/app/Components/Animations/variants"
 
 const BlogsData = [
   {
@@ -94,57 +96,74 @@ const Blog = () => {
 
   return (
     <>
-      <section id="blog" className="px-[8%] lg:[px-[16%] py-10 lg:py-30">
-        <div className="flex flex-col items-center">
+      <section id="blog" className="px-[8%] lg:px-[16%] py-10 lg:py-30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col items-center"
+        >
           <div className='title text-center w-full lg:w-[50%]'>
-            <h5 className='Syne text-2xl'>
+            <motion.h5 variants={fadeInUp} className='Syne text-2xl'>
               ( OUR BLOG )
-            </h5>
+            </motion.h5>
 
-            <h1 className='Syne font-extrabold text-4xl md:text-6xl'>
+            <motion.h1 variants={fadeInUp} className='Syne font-extrabold text-4xl md:text-6xl'>
               READ OUR LATEST ARTICLES
-            </h1>
+            </motion.h1>
           </div>
-        </div>
+        </motion.div>
 
         {/* Blogs Cards */}
         <div className="mt-20 md:mt-30 Blogs-wrap">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {(showAll ? BlogsData : BlogsData.slice(0, 6)).map((blog) => (
-              <div key={blog.id} className="flex flex-col bg-white/30 border border-white p-4 shadow-lg shadow-gray-200 rounded-lg">
-                <div className="group flex flex-col cursor-pointer shadow-lg shadow-gray-300 rounded-2xl overflow-hidden w-full">
-                  <div className="rounded-2xl overflow-hidden">
-                    <Image
-                      src={blog.img}
-                      alt={blog.title}
-                      className="w-full h-full rounded-2xl group-hover:scale-105 transition-all duration-300 ease-in-out"
-                    />
-                  </div>
-
-                  <div className="p-6 pb-2 bg-white/70 blog-box">
-                    <div className="flex items-center gap-2">
-                      <span className="text-gray-700">{blog.tag}</span>
-                      <span className="text-xl">·</span>
-                      <span className="text-gray-700">{blog.date}</span>
+            <AnimatePresence mode="popLayout">
+              {(showAll ? BlogsData : BlogsData.slice(0, 6)).map((blog) => (
+                <motion.div
+                  key={blog.id}
+                  layout
+                  variants={fadeInUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+                  className="flex flex-col bg-white/30 border border-white p-4 shadow-lg shadow-gray-200 rounded-lg"
+                >
+                  <div className="group flex flex-col cursor-pointer shadow-lg shadow-gray-300 rounded-2xl overflow-hidden w-full">
+                    <div className="rounded-2xl overflow-hidden">
+                      <Image
+                        src={blog.img}
+                        alt={blog.title}
+                        className="w-full h-full rounded-2xl group-hover:scale-105 transition-all duration-300 ease-in-out"
+                      />
                     </div>
 
-                    <h1 className="Syne text-2xl font-semibold my-2 hover:text-prim transition-all duration-300">
-                      {blog.title}
-                    </h1>
-
-                    <p className="tracking-wide">
-                      {blog.desc}
-                    </p>
-
-                    <button className="btn bg-white/20 backdrop-blur-xl text-xl mt-5 w-full hover:bg-black hover:text-white px-6 py-3 rounded-xl mb-5 border border-black/30 transition-all duration-300 cursor-pointer">
-                      <div className="btn-text">
-                        Read More <i className="bi bi-arrow-right ps-2"></i>
+                    <div className="p-6 pb-2 bg-white/70 blog-box">
+                      <div className="flex items-center gap-2">
+                        <span className="text-gray-700">{blog.tag}</span>
+                        <span className="text-xl">·</span>
+                        <span className="text-gray-700">{blog.date}</span>
                       </div>
-                    </button>
+
+                      <h1 className="Syne text-2xl font-semibold my-2 hover:text-prim transition-all duration-300">
+                        {blog.title}
+                      </h1>
+
+                      <p className="tracking-wide">
+                        {blog.desc}
+                      </p>
+
+                      <button className="btn bg-white/20 backdrop-blur-xl text-xl mt-5 w-full hover:bg-black hover:text-white px-6 py-3 rounded-xl mb-5 border border-black/30 transition-all duration-300 cursor-pointer">
+                        <div className="btn-text">
+                          Read More <i className="bi bi-arrow-right ps-2"></i>
+                        </div>
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </div>
 
           <div className="w-full flex justify-center items-center mt-12">
