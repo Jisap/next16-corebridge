@@ -7,6 +7,8 @@ import ServiceIcon3 from "@/public/Images/service-icon3.svg"
 import ServiceIcon4 from "@/public/Images/service-icon4.svg"
 import ServiceIcon5 from "@/public/Images/service-icon5.svg"
 import ServiceIcon6 from "@/public/Images/service-icon6.svg"
+import { motion } from "framer-motion"
+import { fadeInUp, staggerContainer } from "@/app/Components/Animations/variants"
 
 const ServiceData = [
   {
@@ -51,17 +53,30 @@ const Services = () => {
   return (
     <>
       <section id="services" className="px-[8%] lg:px-[16%] py-30 pt-40 lg:pt-30">
-        <div className="title text-center">
-          <h5 className="Syne text-2xl">( POTENTIAL SERVICES )</h5>
-          <h1 className="Syne font-extrabold text-4xl md:text-6xl">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="title text-center"
+        >
+          <motion.h5 variants={fadeInUp} className="Syne text-2xl">( POTENTIAL SERVICES )</motion.h5>
+          <motion.h1 variants={fadeInUp} className="Syne font-extrabold text-4xl md:text-6xl">
             OUR BEST SERVICES
-          </h1>
-        </div>
+          </motion.h1>
+        </motion.div>
 
         <div className="mt-20 services-wrap">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5"
+          >
             {ServiceData.map((service, index) => (
-              <div
+              <motion.div
+                variants={fadeInUp}
                 key={index}
                 className="service-card flex flex-col items-center bg-white/50 border border-white  p-4 shadow-lg shadow-gray-200 rounded-lg"
               >
@@ -87,9 +102,9 @@ const Services = () => {
                     </div>
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </>
