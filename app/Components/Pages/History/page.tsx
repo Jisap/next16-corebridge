@@ -1,5 +1,9 @@
+"use client"
+
 import Image from 'next/image'
 import sectionBG from "@/public/Images/section-bg.webp"
+import { motion } from "framer-motion"
+import { fadeInUp, staggerContainer, fadeInLeft } from "@/app/Components/Animations/variants"
 
 interface HistoryItem {
   year: string
@@ -58,8 +62,15 @@ const History = () => {
           className='absolute top-20 left-0  w-full h-full object-cover -z-1'
         />
 
-        <div className='flex flex-col lg:flex-row justify-between gap-5 z-5'>
-          <div className='w-full lg:w-1/2 lg:sticky top-40 left-0 h-full'>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className='flex flex-col lg:flex-row justify-between gap-5 z-5'>
+          <motion.div
+            variants={fadeInLeft}
+            className='w-full lg:w-1/2 lg:sticky top-40 left-0 h-full'>
             <div className='title'>
               <h5 className='Syne text-2xl'>
                 ( OUR HISTORY )
@@ -77,20 +88,21 @@ const History = () => {
                 Explore More <i className='bi bi-arrow-right ps-3 text-2xl'></i>
               </button>
             </div>
-          </div>
+          </motion.div>
 
           <div className='w-full lg:w-1/2 lg:mt-0 mt-5'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6'>
+            <motion.div variants={staggerContainer} className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6'>
               {historyData.map((item) => (
-                <HistoryCard key={item.year} {...item} />
+                <motion.div variants={fadeInUp} key={item.year}>
+                  <HistoryCard {...item} />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   )
 }
 
 export default History
-
