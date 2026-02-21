@@ -6,6 +6,8 @@ import clutchImg from "@/public/Images/clutch.svg"
 import arrowImg from "@/public/Images/arrow-shape-1.svg"
 import textArrowImg from "@/public/Images/text-arrow.svg"
 import CountUp from "react-countup"
+import { motion } from "framer-motion"
+import { fadeInUp, fadeInRight, staggerContainer, zoomIn, floatVariant, rotateVariant } from "@/app/Components/Animations/variants"
 
 
 const Hero = () => {
@@ -13,25 +15,43 @@ const Hero = () => {
     <>
       <div className="hero-header relative">
         <div className="container mx-auto px-6 lg:px-[5%] py-10 lg:py-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-32 items-center min-h-[calc(100vh-80px)] lg:min-h-screen">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-32 items-center min-h-[calc(100vh-80px)] lg:min-h-screen"
+          >
             {/* izquierda */}
             <div className="hero-content-wrapper z-10 lg:pr-10">
               <div className="hero-content w-full">
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2">
+                <motion.h1
+                  variants={fadeInUp}
+                  className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2"
+                >
                   AGENCY
-                </h1>
+                </motion.h1>
 
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2">
+                <motion.h1
+                  variants={fadeInUp}
+                  className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2"
+                >
                   <span>
                     OFFERING
                   </span>
-                </h1>
+                </motion.h1>
 
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2">
+                <motion.h1
+                  variants={fadeInUp}
+                  className="Syne text-6xl md:text-7xl tracking-wider font-bold mb-2"
+                >
                   LEAD CAPTURE
-                </h1>
+                </motion.h1>
 
-                <h1 className="Syne text-6xl md:text-7xl tracking-wider font-bold flex items-center justify-center lg:justify-start gap-2 mb-6">
+                <motion.h1
+                  variants={fadeInUp}
+                  className="Syne text-6xl md:text-7xl tracking-wider font-bold flex items-center justify-center lg:justify-start gap-2 mb-6"
+                >
                   SOFTWARE
 
                   <Image
@@ -41,13 +61,19 @@ const Hero = () => {
                     height={40}
                     className="w-5 md:w-8"
                   />
-                </h1>
+                </motion.h1>
 
-                <p className="mt-5 text-lg md:text-xl text-gray-700 max-w-lg mx-auto lg:mx-0">
+                <motion.p
+                  variants={fadeInUp}
+                  className="mt-5 text-lg md:text-xl text-gray-700 max-w-lg mx-auto lg:mx-0"
+                >
                   Success in marketing comes from well-synchronised and steady tactics
-                </p>
+                </motion.p>
 
-                <div className="mt-10 max-w-xl mx-auto lg:mx-0">
+                <motion.div
+                  variants={fadeInUp}
+                  className="mt-10 max-w-xl mx-auto lg:mx-0"
+                >
                   <div className="flex items-center p-1.5 sm:p-2 bg-white rounded-xl shadow-2xl shadow-gray-400/50 gap-2">
                     <input
                       type="text"
@@ -65,38 +91,50 @@ const Hero = () => {
                   <p className="tracking-wider text-gray-500 mt-5 text-sm md:text-base">
                     30 Day Free Trial No Credit Card Required
                   </p>
-                </div>
+                </motion.div>
               </div>
             </div>
 
             {/* derecha */}
             <div className="relative h-full flex items-end justify-center lg:justify-end lg:static">
               <div className="hero-img relative lg:absolute lg:bottom-0 lg:right-0 max-w-[90%] lg:max-w-[50%] xl:max-w-[48%] flex items-end">
-                <Image
-                  src={HeroImg}
-                  alt="hero"
-                  className="w-full h-auto object-contain"
-                  priority
-                />
+                <motion.div variants={fadeInRight}>
+                  <Image
+                    src={HeroImg}
+                    alt="hero"
+                    className="w-full h-auto object-contain"
+                    priority
+                  />
+                </motion.div>
 
                 <div className="hero-image-wrapper">
-                  <div className="clutchImg">
-                    <Image
-                      src={clutchImg}
-                      alt="clutch"
-                      width={60}
-                      height={60}
-                    />
-                  </div>
+                  <motion.div
+                    variants={zoomIn}
+                    className="clutchImg"
+                  >
+                    <motion.div animate={floatVariant.animate}>
+                      <Image
+                        src={clutchImg}
+                        alt="clutch"
+                        width={60}
+                        height={60}
+                      />
+                    </motion.div>
+                  </motion.div>
 
-                  <div className="arrowImg">
-                    <Image
-                      src={arrowImg}
-                      alt="arrow"
-                    />
-                  </div>
+                  <motion.div
+                    variants={zoomIn}
+                    className="arrowImg"
+                  >
+                    <motion.div animate={rotateVariant.animate}>
+                      <Image
+                        src={arrowImg}
+                        alt="arrow"
+                      />
+                    </motion.div>
+                  </motion.div>
 
-                  <div className="hero-info-wrap hidden md:block">
+                  <motion.div variants={fadeInRight} className="hero-info-wrap hidden md:block">
                     <div className="hero-info shadow-lg shadow-gray-300 bg-white p-4 md:p-6 rounded-lg">
                       <div className="stars flex gap-1 mb-2">
                         <i className="bi bi-star-fill text-yellow-500"></i>
@@ -133,12 +171,12 @@ const Hero = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
 
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>
