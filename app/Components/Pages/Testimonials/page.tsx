@@ -12,6 +12,7 @@ import { Autoplay, Navigation } from "swiper/modules"
 import type { Swiper as SwiperType } from "swiper"
 import "swiper/css/navigation"
 import "swiper/css"
+import { fadeInUp, fadeInLeft, staggerContainer, zoomIn } from "@/app/Components/Animations/variants"
 
 const AUTOPLAY_DELAY = 3000
 
@@ -65,10 +66,16 @@ const Testimonials = () => {
         className="opacity-80 object-cover -z-10"
       />
 
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-20">
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="flex flex-col lg:flex-row gap-12 lg:gap-16 xl:gap-20"
+      >
 
         {/* ── LEFT: Images ── */}
-        <div className="w-full lg:w-1/2">
+        <motion.div variants={fadeInLeft} className="w-full lg:w-1/2">
           <div className="relative w-full max-w-sm sm:max-w-md mx-auto lg:mx-0">
             {/* Main image */}
             <div className="rounded-2xl overflow-hidden aspect-[4/3]">
@@ -80,7 +87,9 @@ const Testimonials = () => {
             </div>
 
             {/* Floating card */}
-            <div className="absolute -bottom-10 -right-4 sm:-bottom-12 sm:-right-6 lg:-bottom-10 lg:-right-8
+            <motion.div
+              variants={zoomIn}
+              className="absolute -bottom-10 -right-4 sm:-bottom-12 sm:-right-6 lg:-bottom-10 lg:-right-8
                             w-[55%] sm:w-[50%] p-3 sm:p-4
                             bg-white/60 backdrop-blur-xl rounded-2xl shadow-xl">
               <Image
@@ -88,15 +97,15 @@ const Testimonials = () => {
                 alt="Testimonial 2"
                 className="w-full h-auto rounded-xl"
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ── RIGHT: Text + Slider ── */}
-        <div className="w-full lg:w-1/2 mt-16 sm:mt-20 lg:mt-0 flex flex-col justify-center">
+        <motion.div variants={staggerContainer} className="w-full lg:w-1/2 mt-16 sm:mt-20 lg:mt-0 flex flex-col justify-center">
 
           {/* Header */}
-          <div>
+          <motion.div variants={fadeInUp}>
             <h5 className="Syne text-lg sm:text-xl text-gray-500 tracking-wider">
               ( TESTIMONIALS )
             </h5>
@@ -106,10 +115,10 @@ const Testimonials = () => {
             <p className="tracking-wide text-base sm:text-lg text-gray-600 mt-4 max-w-prose">
               We&apos;re proud to be trusted by clients who believe in our vision. Their experiences reflect our dedication to delivering results that truly make an impact.
             </p>
-          </div>
+          </motion.div>
 
           {/* Slider */}
-          <div className="mt-8 lg:mt-10 relative">
+          <motion.div variants={fadeInUp} className="mt-8 lg:mt-10 relative">
             <Image
               src={quote}
               alt="quote"
@@ -225,9 +234,9 @@ const Testimonials = () => {
                 </button>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

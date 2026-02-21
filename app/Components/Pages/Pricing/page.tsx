@@ -1,5 +1,7 @@
 "use client"
 
+import { motion } from "framer-motion"
+import { fadeInUp, staggerContainer, zoomIn } from "@/app/Components/Animations/variants"
 
 const allFeatures = [
   { key: "members", label: "Team Members" },
@@ -66,24 +68,37 @@ const PricingData = [
 const Pricing = () => {
   return (
     <>
-      <section id="pricing" className="px-[8%] lg:[px-[16%] py-10 lg:py-30">
-        <div className="flex flex-col items-center">
+      <section id="pricing" className="px-[8%] lg:px-[16%] py-10 lg:py-30">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex flex-col items-center"
+        >
           <div className='title text-center w-full lg:w-[50%]'>
-            <h5 className='Syne text-2xl'>
+            <motion.h5 variants={fadeInUp} className='Syne text-2xl'>
               ( PRICING TABLE )
-            </h5>
+            </motion.h5>
 
-            <h1 className='Syne font-extrabold text-4xl md:text-6xl'>
+            <motion.h1 variants={fadeInUp} className='Syne font-extrabold text-4xl md:text-6xl'>
               Select the Best Package To Meet Your Needs
-            </h1>
+            </motion.h1>
           </div>
-        </div>
+        </motion.div>
 
         {/* Pricing Card */}
         <div className="mt-20 md:mt-30 Pricing-wrap">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+          >
             {PricingData.map((plan, index) => (
-              <div
+              <motion.div
+                variants={zoomIn}
                 key={plan.id}
                 className={`
                   flex flex-col bg-white/50 border border-white p-4 shadow-lg rounded-lg 
@@ -132,9 +147,9 @@ const Pricing = () => {
                     })}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </>
