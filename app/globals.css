@@ -728,3 +728,59 @@ body {
   background-size: cover;
   background-position: center center;
 }
+
+.footer-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  background-image: url("/Images/footer-shape1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.footer-shape::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background-color: var(--prim);
+  filter: blur(150px);
+}
+
+.footer-shape2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  border-radius: 100%;
+  background-color: var(--prim);
+  filter: blur(180px);
+}
+
+.footer-shape2::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  transform: rotateY(180deg);
+  border-radius: 20px;
+  background-image: url("/Images/footer-shape1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}

@@ -138,7 +138,7 @@ const Faqs = () => {
               </div>
 
               <div className="mt-5">
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   {filteredFaqs.map((faq) => (
                     <motion.div
                       key={faq.id}
