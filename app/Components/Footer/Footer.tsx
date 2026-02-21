@@ -1,5 +1,9 @@
+"use client"
+
 import Link from 'next/link'
 import React from 'react'
+import { motion } from "framer-motion"
+import { fadeInUp, staggerContainer } from "@/app/Components/Animations/variants"
 
 const Footer = () => {
   return (
@@ -10,8 +14,14 @@ const Footer = () => {
 
         <footer>
           <div className='footer-grid'>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5'>
-              <div className='footer-col'>
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-5'
+            >
+              <motion.div variants={fadeInUp} className='footer-col'>
                 <h2 className='text-3xl tracking-wide mb-5'>
                   Useful links
                 </h2>
@@ -48,9 +58,9 @@ const Footer = () => {
                     Faqs
                   </Link>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className='footer-col'>
+              <motion.div variants={fadeInUp} className='footer-col'>
                 <h2 className='text-3xl tracking-wide mb-5'>
                   Our company
                 </h2>
@@ -87,9 +97,9 @@ const Footer = () => {
                     Privacy Policy
                   </Link>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className='footer-col'>
+              <motion.div variants={fadeInUp} className='footer-col'>
                 <h2 className='text-3xl tracking-wide mb-5'>
                   Follow Us
                 </h2>
@@ -126,9 +136,9 @@ const Footer = () => {
                     Pinterest
                   </Link>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className='footer-col'>
+              <motion.div variants={fadeInUp} className='footer-col'>
                 <h2 className='text-3xl tracking-wide mb-5'>
                   Contact Info
                 </h2>
@@ -144,11 +154,17 @@ const Footer = () => {
                 <h5 className='text-xl tracking-wide text-gray-800 cursor-pointer hover:text-prim transition-all duration-200'>
                   +(91) 123 456 7890
                 </h5>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
-          <div className='footer-bottom pt-20'>
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className='footer-bottom pt-20'
+          >
             <div className='flex flex-wrap justify-center lg:justify-between items-center text-center gap-3 border-t border-gray-300 pt-10'>
               <p className='text-xl text-gray-600'>
                 Copyright © 2026 <span className='text-prim'>CoreBridge</span>. All Rights Reserved.
@@ -175,7 +191,7 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </footer>
       </div>
     </>
